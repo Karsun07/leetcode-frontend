@@ -11,10 +11,7 @@ const signupSchema = z.object({
   password: z
   .string()
   .min(8, "Password is too weak")
-  .regex(/[a-z]/, "Add a lowercase letter")
-  .regex(/[A-Z]/, "Add an uppercase letter")
-  .regex(/[0-9]/, "Add a number")
-  .regex(/[^a-zA-Z0-9]/, "Add a special character")
+  
 });
 
 function Login() {
