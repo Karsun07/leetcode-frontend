@@ -6,6 +6,9 @@ import { useDispatch,useSelector } from "react-redux";
 import { checkAuth } from "./authSlice";
 import { useEffect } from "react";
 import AdminPanel from "./pages/AdminPanel";
+import ProblemPage from "./pages/ProblemPage";
+
+
 function App(){
   const dispatch=useDispatch();
   const {isAuthenticated,user,loading}=useSelector((state)=>state.auth);
@@ -31,7 +34,17 @@ function App(){
         <Route path="/login" element={isAuthenticated?<Navigate to="/"/>:<Login></Login>}></Route>
         <Route path="/signup" element={isAuthenticated?<Navigate to="/"/>:<Signup></Signup>}></Route>
         <Route path="/admin" element={<AdminPanel/>}></Route>
-
+         <Route path="/problem/:problemId" element={<ProblemPage/>}></Route>
+        {/* when we type /admin for routing on browser the page refresh and states are lost so isAuthenticated is false so even admin cant acces /admin path 
+        the solution is that we can create a button which is visible by only the admin to go to this route*/}
+        {/* <Route 
+        path="/admin" 
+        element={
+          isAuthenticated && user?.role === 'admin' ? 
+            <AdminPanel /> : 
+            <Navigate to="/" />
+        } 
+      /> */}
       </Routes>
       </BrowserRouter>
 
