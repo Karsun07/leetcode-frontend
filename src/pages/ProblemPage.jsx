@@ -175,7 +175,7 @@ const ProblemPage = () => {
       setLoading(true);
       try {
         
-        const response = await axiosClient.get(`/problem/problemById/${problemId}`);
+        const response = await axiosClient.get(`/problem/${problemId}`);
        
         
         const initialCode = response.data.startCode.find(sc => sc.language === langMap[selectedLanguage]).initialCode;
